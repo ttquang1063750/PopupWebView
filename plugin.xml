@@ -17,7 +17,7 @@
   <platform name="android">
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="PopupWebView">
-        <param name="android-package" value="com.github.ttquang.poupWebView.PopupWebView"/>
+        <param name="android-package" value="com.github.ttquang.poupWebView.PopupWebViewPlugin"/>
       </feature>
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
