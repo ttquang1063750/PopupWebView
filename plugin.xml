@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="com.github.ttquang.poupWebView" version="0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    >
+<plugin id="com.github.ttquang.poupWebView" version="0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0">
   <name>PopupWebView</name>
   <js-module name="PopupWebView" src="www/PopupWebView.js">
     <clobbers target="cordova.plugins.PopupWebView"/>
@@ -13,6 +12,16 @@
     </config-file>
     <source-file src="src/ios/PopupWebView.h"/>
     <source-file src="src/ios/PopupWebView.m"/>
-    <resource-file src="src/ios/media/btn-close.png"/>
+    <resource-file src="src/media/btn-close.png"/>
+  </platform>
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="PopupWebView">
+        <param name="android-package" value="com.github.ttquang.poupWebView.PopupWebView"/>
+      </feature>
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+    <source-file src="src/android/PopupWebView.java" target-dir="src/com/github/ttquang/poupWebView/PopupWebView"/>
+    <source-file src="src/media/btn-close.png" target-dir="res/drawable"/>
   </platform>
 </plugin>
