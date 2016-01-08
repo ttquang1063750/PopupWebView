@@ -1,5 +1,17 @@
 var exec = require('cordova/exec');
+var PopupWebView = function() {};
 
-exports.coolMethod = function(arg0, success, error) {
-    exec(success, error, "PopupWebView", "coolMethod", [arg0]);
+PopupWebView.prototype.show = function(successCallback, errorCallback, url){
+    exec(successCallback, errorCallback, "PopupWebView", "show", [{url:url}]);
 };
+
+if(!window.plugins) {
+    window.plugins = {};
+}
+if (!window.plugins.PopupWebView) {
+    window.plugins.PopupWebView = new PopupWebView();
+}
+
+if (typeof module != 'undefined' && module.exports) {
+    module.exports = PopupWebView;
+}
