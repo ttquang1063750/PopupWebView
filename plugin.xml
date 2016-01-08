@@ -12,7 +12,7 @@
     </config-file>
     <source-file src="src/ios/PopupWebView.h"/>
     <source-file src="src/ios/PopupWebView.m"/>
-    <resource-file src="src/media/btn-close.png"/>
+    <resource-file src="src/media/btn_close.png"/>
   </platform>
   <platform name="android">
     <config-file parent="/*" target="res/xml/config.xml">
@@ -20,8 +20,24 @@
         <param name="android-package" value="com.github.ttquang.poupWebView.PopupWebView"/>
       </feature>
     </config-file>
-    <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-    <source-file src="src/android/PopupWebView.java" target-dir="src/com/github/ttquang/poupWebView/PopupWebView"/>
-    <source-file src="src/media/btn-close.png" target-dir="res/drawable"/>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <activity android:name="com.github.ttquang.poupWebView.PopupWebViewActivity"></activity>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.INTERNET" />
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    </config-file>
+
+    <source-file src="src/android/PopupWebViewPlugin.java" target-dir="src/com/github/ttquang/poupWebView"/>
+    <source-file src="src/android/PopupWebViewActivity.java" target-dir="src/com/github/ttquang/poupWebView"/>
+    <source-file src="src/android/layout/activity_popup_view.xml" target-dir="res/layout"/>
+    <source-file src="src/media/btn_close.png" target-dir="res/drawable"/>
   </platform>
 </plugin>

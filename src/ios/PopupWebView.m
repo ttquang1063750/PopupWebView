@@ -66,7 +66,7 @@
     self.popView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, screen.size.width, screen.size.height)];
     
     UIButton *btnClose = [[UIButton alloc] initWithFrame:CGRectMake(screen.size.width - 101, 20, 81, 80)];
-    UIImage *image = [UIImage imageNamed:@"btn-close.png"];
+    UIImage *image = [UIImage imageNamed:@"btn_close.png"];
     [btnClose setBackgroundImage:image forState:UIControlStateNormal];
     [btnClose addTarget:self action:@selector(btnClose) forControlEvents:UIControlEventTouchUpInside];
     
