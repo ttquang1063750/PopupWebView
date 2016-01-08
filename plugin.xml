@@ -11,6 +11,7 @@
         <param name="ios-package" value="PopupWebView"/>
       </feature>
     </config-file>
+    <source-file src="src/ios/PopupWebView.h"/>
     <source-file src="src/ios/PopupWebView.m"/>
     <resource-file src="src/ios/media/btn-close.png"/>
   </platform>
