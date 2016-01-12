@@ -1,7 +1,7 @@
 var exec = require('cordova/exec');
 var PopupWebView = function() {};
 
-PopupWebView.prototype.show = function(successCallback, errorCallback, url){
+PopupWebView.prototype.show = function(url, successCallback, errorCallback){
     exec(successCallback, errorCallback, "PopupWebView", "show", [{url:url}]);
 };
 
