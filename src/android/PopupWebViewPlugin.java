@@ -1,4 +1,4 @@
-package com.github.ttquang.poupWebView;
+package com.github.poupWebView;
 
 import android.content.Intent;
 
