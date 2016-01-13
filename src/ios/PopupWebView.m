@@ -70,10 +70,17 @@
     [btnClose setBackgroundImage:image forState:UIControlStateNormal];
     [btnClose addTarget:self action:@selector(btnClose) forControlEvents:UIControlEventTouchUpInside];
     
+    btnBack = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 80, 80)];
+    UIImage *imageBack = [UIImage imageNamed:@"back.png"];
+    [btnBack setBackgroundImage:imageBack forState:UIControlStateNormal];
+    [btnBack addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    btnBack.hidden = YES;
+    
     self.popView.delegate = self;
     self.popView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.popView];
     [self.popView addSubview:btnClose];
+    [self.popView addSubview:btnBack];
 
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.frame = CGRectMake(screen.size.width/2 - 20, screen.size.height/2 - 20, 40, 40);
@@ -85,6 +92,10 @@
 {
     self.popView.delegate = nil;
     [super viewDidUnload];
+}
+
+- (void)goBack {
+    [self.popView goBack];
 }
 
 -(void)btnClose{
@@ -122,13 +133,17 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"Finished: %@", [webView.request.URL relativeString]);
     [spinner stopAnimating];
+    if ([self.popView canGoBack]) {
+        btnBack.hidden = NO;
+    }else{
+        btnBack.hidden = YES;
+    }
 }
 
 - (void)webView:(UIWebView*)theWebView didFailLoadWithError:(NSError*)error
 {
     // log fail message, stop spinner, update back/forward
-    NSLog(@"webView:didFailLoadWithError - %ld: %@", (long)error.code, [error localizedDescription]);
+    NSLog(@"webView:didFailLoadWithError - %ld: %@, with url: %@", (long)error.code, [error localizedDescription], [theWebView.request.URL relativeString]);
     [spinner stopAnimating];
-    [self btnClose];
 }
 @end

@@ -12,7 +12,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
-
 public class PopupWebViewActivity extends Activity {
     private PopupWebViewActivity _current;
     private ProgressDialog progress;
@@ -64,6 +63,17 @@ public class PopupWebViewActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                progress.dismiss();
+                if (webView.canGoBack()) {
+                    btnBack.setVisibility(View.VISIBLE);
+                }else {
+                    btnBack.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedError(view, errorCode, description, failingUrl);
                 progress.dismiss();
                 if (webView.canGoBack()) {
                     btnBack.setVisibility(View.VISIBLE);

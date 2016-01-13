@@ -18,6 +18,7 @@
 @interface PopupViewController: UIViewController <UIWebViewDelegate>{
     NSString* _url;
     UIActivityIndicatorView *spinner;
+    UIButton *btnBack;
 }
 @property (nonatomic, strong) IBOutlet UIWebView* popView;
 -(void)navigateTo:(NSString*)thUrl root: (UIViewController*) theRoot;
