@@ -13,6 +13,7 @@
     <source-file src="src/ios/PopupWebView.h"/>
     <source-file src="src/ios/PopupWebView.m"/>
     <resource-file src="src/media/btn_close.png"/>
+    <resource-file src="src/media/back.png"/>
   </platform>
   <platform name="android">
     <config-file parent="/*" target="res/xml/config.xml">
@@ -39,5 +40,6 @@
     <source-file src="src/android/PopupWebViewActivity.java" target-dir="src/com/github/poupWebView"/>
     <source-file src="src/android/layout/activity_popup_view.xml" target-dir="res/layout"/>
     <source-file src="src/media/btn_close.png" target-dir="res/drawable"/>
+    <source-file src="src/media/back.png" target-dir="res/drawable"/>
   </platform>
 </plugin>

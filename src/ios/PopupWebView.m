@@ -74,11 +74,15 @@
     self.popView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.popView];
     [self.popView addSubview:btnClose];
+
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.frame = CGRectMake(screen.size.width/2 - 20, screen.size.height/2 - 20, 40, 40);
+    spinner.hidesWhenStopped = YES;
+    [self.view addSubview:spinner];
 }
 
 - (void)viewDidUnload
 {
-    [self.popView loadHTMLString:nil baseURL:nil];
     self.popView.delegate = nil;
     [super viewDidUnload];
 }
@@ -107,6 +111,7 @@
 {
     // loading url, start spinner, update back/forward
     NSLog(@"loading: %@", [theWebView.request.URL relativeString]);
+    [spinner startAnimating];
 }
 
 - (BOOL)webView:(UIWebView*)theWebView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
@@ -116,12 +121,14 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"Finished: %@", [webView.request.URL relativeString]);
+    [spinner stopAnimating];
 }
 
 - (void)webView:(UIWebView*)theWebView didFailLoadWithError:(NSError*)error
 {
     // log fail message, stop spinner, update back/forward
     NSLog(@"webView:didFailLoadWithError - %ld: %@", (long)error.code, [error localizedDescription]);
+    [spinner stopAnimating];
     [self btnClose];
 }
 @end
